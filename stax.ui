@@ -68,9 +68,9 @@
     <property name="title">
      <string>File</string>
     </property>
-    <addaction name="FileActionAddList"/>
-    <addaction name="FileActionRemoveList"/>
-    <addaction name="FileActionUpdateList"/>
+    <addaction name="FileActionCreateGoal"/>
+    <addaction name="FileActionRemoveGoal"/>
+    <addaction name="FileActionUpdateGoal"/>
    </widget>
    <widget class="QMenu" name="TopMenuHelpBar">
     <property name="title">
@@ -87,19 +87,19 @@
     <string>About Stax</string>
    </property>
   </action>
-  <action name="FileActionAddList">
+  <action name="FileActionCreateGoal">
    <property name="text">
-    <string>Add List</string>
+    <string>Create Goal</string>
    </property>
   </action>
-  <action name="FileActionRemoveList">
+  <action name="FileActionRemoveGoal">
    <property name="text">
-    <string>Remove List</string>
+    <string>Remove Goal</string>
    </property>
   </action>
-  <action name="FileActionUpdateList">
+  <action name="FileActionUpdateGoal">
    <property name="text">
-    <string>Update List</string>
+    <string>Update Goal</string>
    </property>
   </action>
  </widget>

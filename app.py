@@ -1,6 +1,9 @@
-import os, sys, pycipher
+import os, sys
 from PyQt5 import QtWidgets, uic
+from PyQt5.QtCore import QDate, QTime, QDateTime, Qt
 from PyQt5.QtWidgets import *
+from custom import *
+from add_goal_dialog import AddGoal
 
 class Ui(QtWidgets.QMainWindow):
    def __init__(self):
@@ -9,15 +12,19 @@ class Ui(QtWidgets.QMainWindow):
 
       # Stax Calendar Widget
       self.calendar = self.findChild(QtWidgets.QCalendarWidget, 'StaxCalendar')
+      self.calendar.clicked.connect(self.calendarSelect)
 
       # Stax List Table
       self.lists = self.findChild(QtWidgets.QTableWidget, 'ListTable')
 
       # Top Bar Menu
       self.file = self.findChild(QtWidgets.QMenu, 'TopMenuFileBar')
-      self.addList = self.findChild(QtWidgets.QAction, 'FileActionAddList')
-      self.removeList = self.findChild(QtWidgets.QAction, 'FileActionRemoveList')
-      self.updateList = self.findChild(QtWidgets.QAction, 'FileActionUpdateList')
+      self.createGoal = self.findChild(QtWidgets.QAction, 'FileActionCreateGoal')
+      self.createGoal.triggered.connect(self.addListHandler)
+      self.removeGoal = self.findChild(QtWidgets.QAction, 'FileActionRemoveGoal')
+      self.removeGoal.triggered.connect(self.removeListHandler)
+      self.updateGoal = self.findChild(QtWidgets.QAction, 'FileActionUpdateGoal')
+      self.updateGoal.triggered.connect(self.updateListHandler)
       self.help = self.findChild(QtWidgets.QMenu, 'TopeMenuHelpBar')
       self.aboutStax = self.findChild(QtWidgets.QAction, 'HelpActionAboutStax')
       self.aboutStax.triggered.connect(self.aboutStaxHandler)
@@ -26,6 +33,13 @@ class Ui(QtWidgets.QMainWindow):
       self.show()
 
    # ############################ UI METHODS ############################
+   def calendarSelect(self):
+      '''
+      Calendar Select Handler
+      '''
+      currentDate = self.calendar.selectedDate()
+      print(getSteps(currentDate.toString(Qt.ISODate)))
+
    def aboutStaxHandler(self):
       """
       'About Stax' Action Handler
@@ -40,6 +54,24 @@ class Ui(QtWidgets.QMainWindow):
       msg.setWindowTitle("About Stax")
       msg.setStandardButtons(QMessageBox.Ok)
       msg.exec_()
+   
+   def addListHandler(self):
+      """
+      'Add List' Action Handler
+      """
+      pass
+
+   def removeListHandler(self):
+      """
+      'Remove List' Action Handler
+      """
+      pass
+
+   def updateListHandler(self):
+      """
+      'Update List' Action Handler
+      """
+      pass
 
 app = QtWidgets.QApplication(sys.argv)
 window = Ui()
