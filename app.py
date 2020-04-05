@@ -14,8 +14,8 @@ class Ui(QtWidgets.QMainWindow):
       self.calendar = self.findChild(QtWidgets.QCalendarWidget, 'StaxCalendar')
       self.calendar.clicked.connect(self.calendarSelect)
 
-      # Stax List Table
-      self.lists = self.findChild(QtWidgets.QTableWidget, 'ListTable')
+      # Stax Goal Table
+      self.goals = self.findChild(QtWidgets.QTableWidget, 'ListTable')
 
       # Top Bar Menu
       self.file = self.findChild(QtWidgets.QMenu, 'TopMenuFileBar')
