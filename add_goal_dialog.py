@@ -1,7 +1,7 @@
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtCore import QDate, QTime, QDateTime, Qt
 from PyQt5.QtWidgets import *
-from custom import *
+from db import *
 
 class AddGoal(QtWidgets.QDialog):
    '''

@@ -2,7 +2,7 @@ import os, sys
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtCore import QDate, QTime, QDateTime, Qt
 from PyQt5.QtWidgets import *
-from custom import *
+from db import *
 from add_goal_dialog import AddGoal
 
 class Ui(QtWidgets.QMainWindow):

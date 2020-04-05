@@ -103,10 +103,5 @@ def getSteps(day):
    Get all the steps with their section IDs and description
    :param day: Date in ####-##-## format
    '''
-   sql = '''
-   SELECT      st.[Description], s.[Description]
-   FROM        Section s
-   INNER JOIN  Step st ON s.ID=st.Section_ID
-   WHERE       st.Day = '{0}'
-   '''.format(day)
+   sql = "SELECT s.[Description], st.[Description] FROM Step st INNER JOIN Section s ON st.Section_ID=s.ID WHERE st.Day = '{0}'".format(day)
    return query(sql)
