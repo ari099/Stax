@@ -3,17 +3,17 @@ from PyQt5.QtCore import QDate, QTime, QDateTime, Qt
 from PyQt5.QtWidgets import *
 from db import *
 
-class AddGoal(QtWidgets.QDialog):
+class RemoveGoal(QtWidgets.QDialog):
    '''
    'Add Goal' Dialog Form Box
    '''
    def __init__(self):
-      super(AddGoal, self).__init__()
-      uic.loadUi("add_goal.ui", self)
+      super(RemoveGoal, self).__init__()
+      uic.loadUi("remove_goal.ui", self)
       self.show()
 
-      self.ok = self.findChild(QtWidgets.QPushButton, "AddGoalOKButton")
-      self.cancel = self.findChild(QtWidgets.QPushButton, "AddGoalCancelButton")
+      self.ok = self.findChild(QtWidgets.QPushButton, "RemoveGoalOKButton")
+      self.cancel = self.findChild(QtWidgets.QPushButton, "RemoveGoalCancelButton")
       self.cancel.clicked.connect(self.closeWindow)
    
    def closeWindow(self):

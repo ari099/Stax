@@ -13,7 +13,7 @@ def query(sql):
          cursor = db.execute(sql)
          results = list()
          for row in cursor:
-               results.append(row)
+            results.append(row)
       else:
          db.execute(sql)
          db.commit()
@@ -103,5 +103,5 @@ def getSteps(day):
    Get all the steps with their section IDs and description
    :param day: Date in ####-##-## format
    '''
-   sql = "SELECT s.[Description], st.[Description] FROM Step st INNER JOIN Section s ON st.Section_ID=s.ID WHERE st.Day = '{0}'".format(day)
+   sql = "SELECT s.[Description], st.[Description], st.Done FROM Step st INNER JOIN Section s ON st.Section_ID=s.ID WHERE st.Day = '{0}'".format(day)
    return query(sql)

@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Add Goal</string>
   </property>
-  <widget class="QPushButton" name="AddGoalOKButton">
+  <widget class="QPushButton" name="UpdateGoalOKButton">
    <property name="geometry">
     <rect>
      <x>600</x>
@@ -34,7 +34,7 @@
     <string>OK</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="AddGoalCancelButton">
+  <widget class="QPushButton" name="UpdateGoalCancelButton">
    <property name="geometry">
     <rect>
      <x>600</x>
@@ -55,7 +55,7 @@
     <string>Cancel</string>
    </property>
   </widget>
-  <widget class="QTextEdit" name="SubjectTextbox">
+  <widget class="QTextEdit" name="SearchTextBox">
    <property name="geometry">
     <rect>
      <x>10</x>

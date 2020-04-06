@@ -20,5 +20,6 @@ CREATE TABLE Step (
    [Description] VARCHAR(150),
    [Day] DATE,
    Section_ID INT,
+   Done BIT,
    FOREIGN KEY (Section_ID) REFERENCES Section(ID)
 );

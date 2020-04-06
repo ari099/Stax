@@ -1,9 +1,12 @@
 import os, sys
+from datetime import *
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtCore import QDate, QTime, QDateTime, Qt
 from PyQt5.QtWidgets import *
 from db import *
 from add_goal_dialog import AddGoal
+from remove_goal_dialog import RemoveGoal
+from update_goal_dialog import UpdateGoal
 
 class Ui(QtWidgets.QMainWindow):
    def __init__(self):
@@ -20,11 +23,11 @@ class Ui(QtWidgets.QMainWindow):
       # Top Bar Menu
       self.file = self.findChild(QtWidgets.QMenu, 'TopMenuFileBar')
       self.createGoal = self.findChild(QtWidgets.QAction, 'FileActionCreateGoal')
-      self.createGoal.triggered.connect(self.addListHandler)
+      self.createGoal.triggered.connect(self.createGoalHandler)
       self.removeGoal = self.findChild(QtWidgets.QAction, 'FileActionRemoveGoal')
-      self.removeGoal.triggered.connect(self.removeListHandler)
+      self.removeGoal.triggered.connect(self.removeGoalHandler)
       self.updateGoal = self.findChild(QtWidgets.QAction, 'FileActionUpdateGoal')
-      self.updateGoal.triggered.connect(self.updateListHandler)
+      self.updateGoal.triggered.connect(self.updateGoalHandler)
       self.help = self.findChild(QtWidgets.QMenu, 'TopeMenuHelpBar')
       self.aboutStax = self.findChild(QtWidgets.QAction, 'HelpActionAboutStax')
       self.aboutStax.triggered.connect(self.aboutStaxHandler)
@@ -37,8 +40,29 @@ class Ui(QtWidgets.QMainWindow):
       '''
       Calendar Select Handler
       '''
+      # Remove previous data
+      self.goals.setRowCount(0)
+
+      # Get the current date
       currentDate = self.calendar.selectedDate()
-      print(getSteps(currentDate.toString(Qt.ISODate)))
+
+      # Get the steps based on the date
+      steps = getSteps(currentDate.toString(Qt.ISODate))
+
+      # Set the row count to the amount of steps found
+      self.goals.setRowCount(len(steps))
+
+      # Add in the steps as rows in the 'self.goals' table
+      for i in range(0, len(steps)):
+         sectionItem = QtWidgets.QTableWidgetItem(steps[i][0])
+         sectionItem.setTextAlignment(Qt.AlignVCenter | Qt.AlignHCenter)
+         stepDescriptionItem = QtWidgets.QTableWidgetItem(steps[i][1])
+         stepDescriptionItem.setTextAlignment(Qt.AlignVCenter | Qt.AlignHCenter)
+         stepDoneItem = QtWidgets.QTableWidgetItem("Done" if steps[i][2] == True else "Not Done")
+         stepDoneItem.setTextAlignment(Qt.AlignVCenter | Qt.AlignHCenter)
+         self.goals.setItem(i, 0, sectionItem)
+         self.goals.setItem(i, 1, stepDescriptionItem)
+         self.goals.setItem(i, 2, stepDoneItem)
 
    def aboutStaxHandler(self):
       """
@@ -55,23 +79,29 @@ class Ui(QtWidgets.QMainWindow):
       msg.setStandardButtons(QMessageBox.Ok)
       msg.exec_()
    
-   def addListHandler(self):
+   def createGoalHandler(self):
       """
       'Add List' Action Handler
       """
-      pass
+      # Start 'Add Goal' Dialog
+      dlg = AddGoal()
+      dlg.exec_()
 
-   def removeListHandler(self):
+   def removeGoalHandler(self):
       """
       'Remove List' Action Handler
       """
-      pass
+      # Start 'Remove Goal' Dialog
+      dlg = RemoveGoal()
+      dlg.exec_()
 
-   def updateListHandler(self):
+   def updateGoalHandler(self):
       """
       'Update List' Action Handler
       """
-      pass
+      # Start 'Update Goal' Dialog
+      dlg = UpdateGoal()
+      dlg.exec_()
 
 app = QtWidgets.QApplication(sys.argv)
 window = Ui()

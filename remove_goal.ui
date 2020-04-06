@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>AddGoalDialog</class>
- <widget class="QDialog" name="AddGoalDialog">
+ <class>RemoveGoalDialog</class>
+ <widget class="QDialog" name="RemoveGoalDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,9 +11,9 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Add Goal</string>
+   <string>Remove Goal</string>
   </property>
-  <widget class="QPushButton" name="AddGoalOKButton">
+  <widget class="QPushButton" name="RemoveGoalOKButton">
    <property name="geometry">
     <rect>
      <x>600</x>
@@ -34,7 +34,7 @@
     <string>OK</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="AddGoalCancelButton">
+  <widget class="QPushButton" name="RemoveGoalCancelButton">
    <property name="geometry">
     <rect>
      <x>600</x>
@@ -55,7 +55,7 @@
     <string>Cancel</string>
    </property>
   </widget>
-  <widget class="QTextEdit" name="SubjectTextbox">
+  <widget class="QTextEdit" name="SearchTextBox">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -73,7 +73,7 @@
     </font>
    </property>
    <property name="placeholderText">
-    <string>Subject</string>
+    <string>Search...</string>
    </property>
   </widget>
   <widget class="QTableWidget" name="GoalTable">
