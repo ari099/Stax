@@ -48,6 +48,12 @@ def removeGoal(goalID):
    '''.format(goalID)
    return query(sql)
 
+def getGoals():
+   '''
+   Get all the goals
+   '''
+   return query("SELECT Subject, [Description] FROM Goal")
+
 def addSection(goalID, description):
    '''
    Add section to goal
@@ -71,6 +77,14 @@ def removeSection(sectionID):
    DELETE FROM Section
    WHERE ID = {0}
    '''.format(sectionID)
+   return query(sql)
+
+def getSections(goalID):
+   '''
+   Get sections by goal ID
+   :param goalID: Goal ID
+   '''
+   sql = "SELECT g.Subject, s.[Description] FROM Section s INNER JOIN Goal g ON s.Goal_ID=g.ID WHERE s.Goal_ID = {0}".format(goalID)
    return query(sql)
 
 def addStep(sectionID, description, day):
