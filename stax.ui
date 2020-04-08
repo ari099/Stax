@@ -87,7 +87,7 @@
      <height>26</height>
     </rect>
    </property>
-   <widget class="QMenu" name="TopMenuFileBar">
+   <widget class="QMenu" name="TopMenuGoalBar">
     <property name="font">
      <font>
       <family>Segoe UI Semibold</family>
@@ -97,11 +97,9 @@
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="title">
-     <string>File</string>
+     <string>Goals</string>
     </property>
-    <addaction name="FileActionCreateGoal"/>
-    <addaction name="FileActionRemoveGoal"/>
-    <addaction name="FileActionUpdateGoal"/>
+    <addaction name="FileActionManageGoals"/>
    </widget>
    <widget class="QMenu" name="TopMenuHelpBar">
     <property name="title">
@@ -109,7 +107,7 @@
     </property>
     <addaction name="HelpActionAboutStax"/>
    </widget>
-   <addaction name="TopMenuFileBar"/>
+   <addaction name="TopMenuGoalBar"/>
    <addaction name="TopMenuHelpBar"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
@@ -123,9 +121,9 @@
     </font>
    </property>
   </action>
-  <action name="FileActionCreateGoal">
+  <action name="FileActionManageGoals">
    <property name="text">
-    <string>Create Goal</string>
+    <string>Manage</string>
    </property>
    <property name="font">
     <font>

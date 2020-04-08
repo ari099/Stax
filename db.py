@@ -1,4 +1,8 @@
 import os, random, sys, sqlite3
+from datetime import *
+from PyQt5 import QtWidgets, uic
+from PyQt5.QtCore import QDate, QTime, QDateTime, Qt
+from PyQt5.QtWidgets import *
 
 # Database Methods
 def query(sql):
@@ -54,6 +58,22 @@ def getGoals():
    '''
    return query("SELECT Subject, [Description] FROM Goal")
 
+def searchGoals(pattern):
+   '''
+   Search goals by subject
+   :param pattern: Pattern for searching by subject
+   '''
+   results = query("SELECT Subject, [Description] FROM Goal WHERE Subject LIKE '%{0}%'".format(pattern))
+   goals = []
+   for i in range(0, len(results)):
+      s = QtWidgets.QTableWidgetItem(results[i][0])
+      d = QtWidgets.QTableWidgetItem(results[i][1])
+      s.setTextAlignment(Qt.AlignVCenter | Qt.AlignHCenter)
+      d.setTextAlignment(Qt.AlignVCenter | Qt.AlignHCenter)
+      goals.append([s, d])
+   
+   return goals
+
 def addSection(goalID, description):
    '''
    Add section to goal
@@ -87,6 +107,13 @@ def getSections(goalID):
    sql = "SELECT g.Subject, s.[Description] FROM Section s INNER JOIN Goal g ON s.Goal_ID=g.ID WHERE s.Goal_ID = {0}".format(goalID)
    return query(sql)
 
+def searchSections(pattern):
+   '''
+   Search sections by description pattern
+   :param pattern: Description Pattern
+   '''
+   return query("SELECT [Description] FROM Section WHERE [Description] LIKE '%{0}%'".format(pattern))
+
 def addStep(sectionID, description, day):
    '''
    Add step to section
@@ -119,3 +146,10 @@ def getSteps(day):
    '''
    sql = "SELECT s.[Description], st.[Description], st.Done FROM Step st INNER JOIN Section s ON st.Section_ID=s.ID WHERE st.Day = '{0}'".format(day)
    return query(sql)
+
+def searchSteps(pattern):
+   '''
+   Search steps by description pattern
+   :param pattern: Description Pattern
+   '''
+   return query("SELECT [Description] FROM Step WHERE [Description] LIKE '%{0}%'".format(pattern))

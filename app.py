@@ -4,9 +4,7 @@ from PyQt5 import QtWidgets, uic
 from PyQt5.QtCore import QDate, QTime, QDateTime, Qt
 from PyQt5.QtWidgets import *
 from db import *
-from add_goal_dialog import AddGoal
-from remove_goal_dialog import RemoveGoal
-from update_goal_dialog import UpdateGoal
+from goal_dialog import Goal
 
 class Ui(QtWidgets.QMainWindow):
    def __init__(self):
@@ -22,12 +20,8 @@ class Ui(QtWidgets.QMainWindow):
 
       # Top Bar Menu
       self.file = self.findChild(QtWidgets.QMenu, 'TopMenuFileBar')
-      self.createGoal = self.findChild(QtWidgets.QAction, 'FileActionCreateGoal')
+      self.createGoal = self.findChild(QtWidgets.QAction, 'FileActionManageGoals')
       self.createGoal.triggered.connect(self.createGoalHandler)
-      self.removeGoal = self.findChild(QtWidgets.QAction, 'FileActionRemoveGoal')
-      self.removeGoal.triggered.connect(self.removeGoalHandler)
-      self.updateGoal = self.findChild(QtWidgets.QAction, 'FileActionUpdateGoal')
-      self.updateGoal.triggered.connect(self.updateGoalHandler)
       self.help = self.findChild(QtWidgets.QMenu, 'TopeMenuHelpBar')
       self.aboutStax = self.findChild(QtWidgets.QAction, 'HelpActionAboutStax')
       self.aboutStax.triggered.connect(self.aboutStaxHandler)
@@ -84,23 +78,7 @@ class Ui(QtWidgets.QMainWindow):
       'Add List' Action Handler
       """
       # Start 'Add Goal' Dialog
-      dlg = AddGoal()
-      dlg.exec_()
-
-   def removeGoalHandler(self):
-      """
-      'Remove List' Action Handler
-      """
-      # Start 'Remove Goal' Dialog
-      dlg = RemoveGoal()
-      dlg.exec_()
-
-   def updateGoalHandler(self):
-      """
-      'Update List' Action Handler
-      """
-      # Start 'Update Goal' Dialog
-      dlg = UpdateGoal()
+      dlg = Goal()
       dlg.exec_()
 
 app = QtWidgets.QApplication(sys.argv)
